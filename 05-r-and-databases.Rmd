@@ -1,6 +1,6 @@
 ---
-title: "SQL databases and R"
-author: "Data Carpentry contributors"
+title: "Base de Dados SQL e R"
+author: "Autores: Data Carpentry contributors - Tradução: Rogerio B Alves"
 output:
   html_document:
     df_print: paged
