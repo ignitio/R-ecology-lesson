@@ -111,15 +111,15 @@ src_dbi(mammals)
 ```
 
 Assim como um arquivo planihas de cálculo com várias abas, uma base de dados SQLite
-pode conter múltiplas tabelas. Neste caso três delas estão lista coluna `tbls` 
+pode conter múltiplas tabelas. Neste caso três delas estão listadas na linha `tbls` 
 apresentada acima:
 
 * plots
 * species
 * surveys
 
-Now that we know we can connect to the database, let's explore how to get
-the data from its tables into R.
+Agora que nós sabemos como conectar a uma base de dados, vamos explorar como trazer
+os dados dessas tabelas para o R.
 
 ### Querying the database with the SQL syntax
 
