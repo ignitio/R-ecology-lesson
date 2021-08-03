@@ -18,10 +18,10 @@ if (file.exists("portal-database.sqlite")) file.remove("portal-database.sqlite")
 
 ------------
 
-> ### Learning Objectives
+> ### Objetivos de Aprendizado
 >
-> * Access a database from R.
-> * Run SQL queries in R using **`RSQLite`** and **`dplyr`**.
+> * Accessar uma base de dados com R.
+> * Rodar queries SQL em R usando **`RSQLite`** e **`dplyr`**.
 > * Describe the lazy behavior of dplyr on data stored in a database outside of R. 
 > * Prototype queries and retrieve all final results. 
 > * Create complex queries across one or multiple database tables.
