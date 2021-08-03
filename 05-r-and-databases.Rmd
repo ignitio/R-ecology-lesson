@@ -22,14 +22,14 @@ if (file.exists("portal-database.sqlite")) file.remove("portal-database.sqlite")
 >
 > * Accessar uma base de dados com R.
 > * Rodar queries SQL em R usando **`RSQLite`** e **`dplyr`**.
-> * Describe the lazy behavior of dplyr on data stored in a database outside of R. 
-> * Prototype queries and retrieve all final results. 
-> * Create complex queries across one or multiple database tables.
-> * Create an SQLite database from existing .csv files.
+> * Descrever o comportamento preguiçoso (lazy behavior) do dplyr em dados guardados em uma base fora do R. 
+> * Prototipar queries e recuperar todos os resultados finais. 
+> * Criar queries complexa com uma ou mais tabelas de dados.
+> * Criar uma base de dados SQLite a partir de arquivos .csv.
 
 ------------
 
-## Introduction
+## Introdução
 
 
 So far, we have dealt with small datasets that easily fit into your computer's
@@ -55,26 +55,25 @@ in the **`dplyr`** package explains how to do it). RStudio has created
 [a website](http://db.rstudio.com/) that provides documentation and best practices 
 to work on database interfaces.
 
-Interfacing with databases using **`dplyr`** focuses on retrieving and analyzing
-datasets by generating `SELECT` SQL statements, but it doesn't modify the
-database itself. **`dplyr`** does not offer functions to `UPDATE` or `DELETE`
-entries. If you need these functionalities, you will need to use additional R
-packages (e.g., **`RSQLite`**). Here we will demonstrate how to interact with a
-database using **`dplyr`**, using both the **`dplyr`**'s verb syntax and the SQL syntax.
+Fazer a interface com bases de dados usando **`dplyr`** foca em recuperar e analisar
+bases de dados gerando SQL `SELECT`, mas não modifica a própria base.
+**`dplyr`** não oferece funções para `UPDATE` ou `DELETE` de registros.
+Se você precisa dessas funcionalidades, será necessário usar pacotes R  adicionais
+(e.g., **`RSQLite`**). Aqui demonstraremos como interagir com a base de dados usando
+**`dplyr`**, usando tanto a sintaxe do **`dplyr`** quanto a sintaxe do SQL.
 
-### The portal_mammals database
+### A base de dados do portal_mammals
 
-We will continue to explore the `surveys` data you are already familiar with
-from previous lessons. First, we are going to install the **`dbplyr`** package:
+Vamos continuar a explorar os dados de `surveys` com os quais você já se familiarizou
+nas lições anteriores. Primeiro, vamos instalar o pacote **`dbplyr`**:
 
 ```{r dbplyr-install, eval=FALSE, purl=TRUE}
 install.packages(c("dbplyr", "RSQLite"))
 ```
 
-The SQLite database is contained in a single file `portal_mammals.sqlite`
-that you generated during
-[the SQL lesson](https://datacarpentry.org/sql-ecology-lesson/00-sql-introduction/index.html).
-If you don't have it, you can download it from Figshare into the `data_raw` subdirectory using:
+A base de dados SQLite está em um único arquivo `portal_mammals.sqlite` gerado durante a 
+[lição de SQL](https://datacarpentry.org/sql-ecology-lesson/00-sql-introduction/index.html).
+Se você não tem esse arquivo, pode fazer o download do Figshare para o subdiretório `data_raw` usando:
 
 ```{r download, eval = FALSE, purl=FALSE}
 dir.create("data_raw", showWarnings = FALSE)
@@ -82,9 +81,9 @@ download.file(url = "https://ndownloader.figshare.com/files/2292171",
               destfile = "data_raw/portal_mammals.sqlite", mode = "wb")
 ```
 
-## Connecting to databases
+## Conectando com as bases de dados
 
-We can point R to this database using:
+Podemos apontar o R para esta base de dados usando:
 
 ```{r connect, purl=TRUE}
 library(dplyr)
